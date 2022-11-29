@@ -8,93 +8,111 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/tv_hello"
-        android:layout_width="250dp"
-        android:layout_height="46dp"
+        android:id="@+id/header2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="100dp"
-        android:layout_marginTop="36dp"
-        android:background="@android:color/holo_green_light"
-        android:gravity="center"
-        android:text="Hello World!"
-        android:textColor="@color/black"
-        android:textSize="34sp"
+        android:layout_marginTop="120dp"
+        android:layout_marginEnd="100dp"
+        android:fontFamily="sans-serif-black"
+        android:letterSpacing="0.4"
+        android:text="@string/main_header"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="#D30909"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tv_hello2"
-        android:layout_width="104dp"
-        android:layout_height="38dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="16dp"
-        android:text="Hello Again!!"
-        app:layout_constraintStart_toStartOf="@+id/tv_hello"
-        app:layout_constraintTop_toBottomOf="@+id/tv_hello" />
-
-    <TextView
-        android:id="@+id/tv_hey"
-        android:layout_width="114dp"
-        android:layout_height="36dp"
-        android:layout_marginStart="28dp"
-        android:text="Hey!"
-        app:layout_constraintStart_toEndOf="@+id/tv_hello2"
-        app:layout_constraintTop_toTopOf="@+id/tv_hello2" />
-
-    <EditText
-        android:id="@+id/et_int1"
-        android:layout_width="245dp"
-        android:layout_height="44dp"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:hint="enter integer 1"
-        android:inputType="number"
-        android:numeric="integer"
-        app:layout_constraintStart_toStartOf="@+id/tv_hello2"
-        app:layout_constraintTop_toBottomOf="@+id/tv_hello2" />
-
-    <EditText
-        android:id="@+id/et_int2"
-        android:layout_width="241dp"
-        android:layout_height="46dp"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:hint="enter integer 2"
-        android:inputType="number"
-        app:layout_constraintStart_toStartOf="@+id/et_int1"
-        app:layout_constraintTop_toBottomOf="@+id/et_int1" />
-
-    <Button
-        android:id="@+id/bt_add"
+        android:id="@+id/header"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:onClick="add"
-        android:text="Add"
-        app:layout_constraintStart_toStartOf="@+id/et_int2"
-        app:layout_constraintTop_toBottomOf="@+id/et_int2" />
-
-    <TextView
-        android:id="@+id/tv_3"
-        android:layout_width="81dp"
-        android:layout_height="34dp"
-        android:layout_marginStart="72dp"
-        android:layout_marginTop="4dp"
-        android:text="sum"
-        app:layout_constraintStart_toEndOf="@+id/bt_add"
-        app:layout_constraintTop_toTopOf="@+id/bt_add" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="409dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="100dp"
+        android:fontFamily="sans-serif-black"
+        android:letterSpacing="0.4"
+        android:text="@string/main_ordering_title"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="#D30909"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bt_add">
+        app:layout_constraintTop_toBottomOf="@+id/header2" />
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="enter integer 1" />
-    </com.google.android.material.textfield.TextInputLayout>
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="100dp"
+        android:background="#C86161"
+        android:text="@string/main_ordering_ny_title"
+        app:backgroundTint="#C86161"
+        app:iconTint="#DC1B1B"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="100dp"
+        android:background="#C86161"
+        android:text="@string/main_ordering_chicago_title"
+        app:backgroundTint="#C86161"
+        app:iconTint="#DC1B1B"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/header" />
+
+    <TextView
+        android:id="@+id/header3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="70dp"
+        android:layout_marginEnd="100dp"
+        android:fontFamily="sans-serif-black"
+        android:letterSpacing="0.4"
+        android:text="@string/main_orders_title"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="#D30909"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button3" />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="100dp"
+        android:background="#C86161"
+        android:text="@string/main_orders_current_title"
+        app:backgroundTint="#C86161"
+        app:iconTint="#DC1B1B"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/header3" />
+
+    <Button
+        android:id="@+id/button5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="100dp"
+        android:background="#C86161"
+        android:text="@string/main_orders_store_title"
+        app:backgroundTint="#C86161"
+        app:iconTint="#DC1B1B"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button4" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
