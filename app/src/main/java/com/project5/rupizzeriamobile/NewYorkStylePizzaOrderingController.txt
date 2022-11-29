@@ -1,0 +1,240 @@
+package com.project5.rupizzeriamobile;
+
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.GridPane;
+import javafx.scene.text.Text;
+import javafx.stage.Stage;
+
+import java.io.IOException;
+import java.text.DecimalFormat;
+import java.util.ArrayList;
+
+/**
+ * NY style controller class is essential to managing the NY
+ * style ordering GUI
+ * It creates all the necessary attributes associated with
+ * NY style pizza order
+ * @author Santosh Maryala,Nandan Tadi
+ */
+public class NewYorkStylePizzaOrderingController {
+
+    @FXML
+    protected GridPane checkBoxGroup;
+    @FXML
+    protected ImageView pizzaImage;
+    @FXML
+    protected ComboBox pizzaFlavorCBox, pizzaSizeCBox;
+    @FXML
+    protected Text pizzaCrustLabel;
+    private CheckBox[] toppingCB;
+    @FXML
+    protected CheckBox chickenCB, pepperoniCB, hamCB, sausageCB, baconCB,
+            mushroomsCB, onionsCB, jalapenoCB, cheddarCB, pineappleCB,
+            provoloneCB, greenpepersCB, beefCB;
+    @FXML
+    protected Label pieCostLabel;
+    @FXML
+    protected Label addTopCostLabel;
+    @FXML
+    protected Label totalPieCostLabel;
+    private static int FREEMAX = 7;
+    private double extraCost = 0;
+    private static double COST_PER_TOPPING = 1.59;
+    private DecimalFormat df = new DecimalFormat("#.##");
+
+    private static int disable = 2;
+    private static int enable = 3;
+    /**
+     * Method to display all the details regarding a NY style pizza order
+     */
+    public void initialize() {
+        pizzaFlavorCBox.getItems().addAll("Deluxe", "BBQ Chicken",
+                "Meatzza", "Build your own");
+        pizzaSizeCBox.getItems().addAll("Small", "Medium", "Large");
+        pizzaSizeCBox.setValue("Small");
+        pizzaImage.setImage(new Image(getClass()
+                .getResourceAsStream("NYSPizza.jpeg")));
+        toppingCB = new CheckBox[]{chickenCB, pepperoniCB, hamCB, sausageCB,
+                baconCB, mushroomsCB, onionsCB, jalapenoCB, cheddarCB,
+                pineappleCB, provoloneCB, greenpepersCB, beefCB};
+        pizzaFlavorCBox.setValue("Deluxe");
+        pieCostLabel.setText("0.00");
+        addTopCostLabel.setText("0.00");
+        totalPieCostLabel.setText("0.00");
+        flavorChange();
+    }
+
+    /**
+     * Function to bring user back to home screen when home is clicked
+     * @throws IOException if unable to find fxml
+     */
+    @FXML
+    protected void homeClicked() throws IOException {
+        Parent root = FXMLLoader.load(getClass().
+                getResource("MainView.fxml"));
+        Stage window = (Stage) pizzaCrustLabel.getScene().getWindow();
+        window.setScene(new Scene(root, 600, 600));
+    }
+
+    /**
+     * Function to add the current pizza to currentOrder
+     * @throws IOException if unable to find fxml
+     */
+    @FXML
+    protected void addToCartClicked() throws IOException {
+        Pizza pizza = update();
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("CurrentOrderView.fxml"));
+        Parent root = loader.load();
+        CurrentOrderController controller = loader.getController();
+        controller.add(pizza);
+        Stage window = (Stage) pizzaCrustLabel.getScene().getWindow();
+        window.setScene(new Scene(root, 600, 600));
+    }
+    /**
+     * Command to track pizza size change
+     */
+    @FXML
+    protected void sizeChange() {
+        update();
+    }
+    /**
+     * Function to initialize what the toppings
+     * selection possibilities are based on flavor
+     */
+    @FXML
+    protected void flavorChange() {
+        iterateCBGroup(0);
+        if(pizzaFlavorCBox.getValue().equals("Deluxe")) {
+            pizzaCrustLabel.setText(Crust.BROOKLYN.toString());
+            pizzaImage.setImage(new Image(getClass()
+                    .getResourceAsStream("deluxe.png")));
+            sausageCB.setSelected(true);
+            pepperoniCB.setSelected(true);
+            greenpepersCB.setSelected(true);
+            onionsCB.setSelected(true);
+            mushroomsCB.setSelected(true);
+            checkBoxGroup.setDisable(true);
+        }
+        else if(pizzaFlavorCBox.getValue().equals("BBQ Chicken")){
+            pizzaCrustLabel.setText(Crust.THIN.toString());
+            pizzaImage.setImage(new Image(getClass()
+                    .getResourceAsStream("bbqchicken.png")));
+            chickenCB.setSelected(true);
+            greenpepersCB.setSelected(true);
+            provoloneCB.setSelected(true);
+            cheddarCB.setSelected(true);
+            checkBoxGroup.setDisable(true);
+        }
+        else if(pizzaFlavorCBox.getValue().equals("Meatzza")){
+            pizzaCrustLabel.setText(Crust.HAND_TOSSED.toString());
+            pizzaImage.setImage(new Image(getClass()
+                    .getResourceAsStream("meatzza.png")));
+            sausageCB.setSelected(true);
+            pepperoniCB.setSelected(true);
+            beefCB.setSelected(true);
+            hamCB.setSelected(true);
+            checkBoxGroup.setDisable(true);
+        }
+        else{
+            pizzaCrustLabel.setText(Crust.HAND_TOSSED.toString());
+            pizzaImage.setImage(new Image(getClass()
+                    .getResourceAsStream("byo.png")));
+            checkBoxGroup.setDisable(false);
+        }
+        update();
+    }
+
+    /**
+     * Function to determine if and how much additional cost
+     * there are for toppings
+     * @return double the additional cost for toppings
+     */
+    @FXML
+    protected double cbClicked() {
+        int curToppings = iterateCBGroup(1).size();
+        if (curToppings <= FREEMAX) {
+            iterateCBGroup(3);
+            extraCost = COST_PER_TOPPING * (curToppings);
+            addTopCostLabel.setText(df.format(extraCost));
+            totalPieCostLabel.setText(df.format(Double
+                    .parseDouble(pieCostLabel.getText()) + extraCost));
+        }
+        if (curToppings == FREEMAX){
+            iterateCBGroup(2);
+        }
+        return extraCost;
+    }
+    /**
+     * Finding which or which not topping boxes should be disabled
+     * @param function int to see if all checkboxes should be disabled
+     * @return list of selected toppings
+     */
+    private ArrayList<Topping> iterateCBGroup(int function) {
+        ArrayList<Topping> selected = new ArrayList<>();
+        for (CheckBox i: toppingCB) {
+            if (function == 0)
+                i.setSelected(false);
+            else if (function == 1 && i.isSelected() == true){
+                selected.add(Topping.valueOf(i.getText().replace(" ",
+                        "").toUpperCase()));
+            } else if (function == disable && i.isSelected() == false) {
+                i.setDisable(true);
+            } else if (function == enable && i.isDisable()) {
+                i.setDisable(false);
+            }
+        }
+        return selected;
+    }
+    /**
+     * Command to update pricing and provide current Pizza object based
+     * on input.
+     * @return pizza object of currently created
+     */
+    private Pizza update(){
+        PizzaFactory pizzaFactory = new NYPizza();
+        Pizza pizza;
+        if(pizzaFlavorCBox.getValue().equals("Deluxe")) {
+            pizza = pizzaFactory.createDeluxe();
+            pizza.setSize(Size.valueOf(pizzaSizeCBox.getValue().
+                    toString().toUpperCase()));
+        }
+        else if(pizzaFlavorCBox.getValue().equals("BBQ Chicken")){
+            pizza = pizzaFactory.createBBQChicken();
+            pizza.setSize(Size.valueOf(pizzaSizeCBox.getValue().
+                    toString().toUpperCase()));
+        }
+        else if(pizzaFlavorCBox.getValue().equals("Meatzza")){
+            pizza = pizzaFactory.createMeatzza();
+            pizza.setSize(Size.valueOf(pizzaSizeCBox.getValue().
+                    toString().toUpperCase()));
+        }
+        else{
+            BuildYourOwn pizza2 = (BuildYourOwn) pizzaFactory.
+                    createBuildYourOwn();
+            pizza2.setSize(Size.valueOf(pizzaSizeCBox.getValue().
+                    toString().toUpperCase()));
+            ArrayList<Topping> selectedToppings = iterateCBGroup(1);
+            for (Topping i: selectedToppings) {
+                pizza2.add(i);
+            }
+            double extraCost = cbClicked();
+            pizza2.setToppingPrice(extraCost);
+            pieCostLabel.setText(df.format
+                    (pizza2.price() - extraCost));
+            totalPieCostLabel.setText(df.format(pizza2.price()));
+            return pizza2;
+        }
+        pieCostLabel.setText(df.format(pizza.price()));
+        totalPieCostLabel.setText(df.format(pizza.price()));
+        return pizza;
+    }
+}

@@ -1,0 +1,62 @@
+package com.project5.rupizzeriamobile;
+
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.text.Text;
+import javafx.stage.Stage;
+
+import java.io.IOException;
+/**
+ * Class to call manage main view buttons and labels
+ * @author Santosh Maryala, Nandan Tadi
+ */
+public class MainController {
+    @FXML
+    protected Text mainTitle;
+    /**
+     * Command switched view to ChicagoStylePizzaOrderingView.fxml
+     * @throws IOException if unable to find fxml
+     */
+    @FXML
+    protected void chicagoViewClicked() throws IOException {
+        Parent root = FXMLLoader.load(getClass()
+                .getResource("ChicagoStylePizzaOrderingView.fxml"));
+        Stage window = (Stage) mainTitle.getScene().getWindow();
+        window.setScene(new Scene(root, 600, 600));
+    }
+    /**
+     * Command switched view to NewYorkStylePizzaOrderingView.fxml
+     * @throws IOException if unable to find fxml
+     */
+    @FXML
+    protected void newYorkViewClicked() throws IOException {
+        Parent root = FXMLLoader.load(getClass()
+                .getResource("NewYorkStylePizzaOrderingView.fxml"));
+        Stage window = (Stage) mainTitle.getScene().getWindow();
+        window.setScene(new Scene(root, 600, 600));
+    }
+    /**
+     * Command switched view to CurrentOrderView.fxml
+     * @throws IOException if unable to find fxml
+     */
+    @FXML
+    protected void currentOrderClicked() throws IOException {
+        Parent root = FXMLLoader.load(getClass()
+                .getResource("CurrentOrderView.fxml"));
+        Stage window = (Stage) mainTitle.getScene().getWindow();
+        window.setScene(new Scene(root, 600, 600));
+    }
+    /**
+     * Command switched view to StoreOrdersView.fxml
+     * @throws IOException if unable to find fxml
+     */
+    @FXML
+    protected void storeOrdersClicked() throws IOException {
+        Parent root = FXMLLoader.load(getClass()
+                .getResource("StoreOrdersView.fxml"));
+        Stage window = (Stage) mainTitle.getScene().getWindow();
+        window.setScene(new Scene(root, 600, 600));
+    }
+}

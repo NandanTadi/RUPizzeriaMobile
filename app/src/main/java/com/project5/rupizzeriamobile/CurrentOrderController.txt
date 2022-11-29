@@ -1,0 +1,116 @@
+package com.project5.rupizzeriamobile;
+
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
+import javafx.stage.Stage;
+import java.io.IOException;
+import java.text.DecimalFormat;
+import java.util.ArrayList;
+
+/**
+ * CurrentOrderController class is essential to managing the current order GUI
+ * It displays all the items with their respective details and prices.
+ * @author Santosh Maryala,Nandan Tadi
+ */
+public class CurrentOrderController {
+    @FXML
+    protected Label subtotalLabel, salestaxLabel, totalLabel;
+    @FXML
+    private ListView outputField;
+
+    private ArrayList<Pizza> currentOrder;
+    private static Order order = new Order();
+
+    private DecimalFormat df = new DecimalFormat("#.##");
+    /**
+     * Method to display all the items and details for an order view
+     */
+    public void initialize() {
+        currentOrder = order.getCurrentOrder();
+        for (Pizza i: currentOrder)
+            outputField.getItems().add(i.toString(""));
+        updatePricing();
+    }
+    /**
+     * Function to bring user back to home screen when home is clicked
+     * @throws IOException
+     */
+    @FXML
+    protected void homeClicked() throws IOException {
+        Parent root = FXMLLoader.load(getClass()
+                .getResource("MainView.fxml"));
+        Stage window = (Stage) outputField.getScene().getWindow();
+        window.setScene(new Scene(root, 600, 600));
+    }
+    /**
+     * Function to remove a selected items from the order
+     * @throws IOException
+     */
+    @FXML
+    protected void removeClicked() throws IOException {
+        int selected = outputField.getSelectionModel().getSelectedIndex();
+        if (selected >= 0) {
+            currentOrder.remove(selected);
+            outputField.getItems().remove(selected);
+            updatePricing();
+        }
+    }
+    /**
+     * Function to cancel all items from the order
+     * @throws IOException
+     */
+    @FXML
+    protected void clearClicked() throws IOException {
+        currentOrder.clear();
+        outputField.getItems().clear();
+        updatePricing();
+    }
+    /**
+     * Place order sends order to Store order ot handle and clears lists.
+     * @throws IOException
+     */
+    @FXML
+    protected void placeOrderClicked() throws IOException {
+        if (currentOrder.size() >= 1) {
+            Order cur = new Order(order);
+            cur.setPrice(updatePricing());
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("StoreOrdersView.fxml"));
+            loader.load();
+            StoreOrdersController controller = loader.getController();
+            controller.add(cur);
+            order = new Order();
+            clearClicked();
+            homeClicked();
+        }
+    }
+    /**
+     * Updates the current pricing for all elements in order so
+     * that order sums are properly updated.
+     */
+    private double updatePricing() {
+        double subtotal = 0.00;
+        for(Pizza i: currentOrder) {
+            subtotal += i.price();
+        }
+        subtotalLabel.setText("$" + df.format(subtotal));
+        double tax = subtotal * 0.06625;
+        salestaxLabel.setText("$" + df.format(tax));
+        double total = subtotal + tax;
+        totalLabel.setText("$" + df.format(total));
+        return total;
+    }
+    /**
+     * Adds pizza to order object in Current Order
+     * @param obj reference to pizza needed to be added
+     */
+    public void add(Object obj) {
+        order.add(obj);
+        outputField.getItems().clear();
+        initialize();
+    }
+}
