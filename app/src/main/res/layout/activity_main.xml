@@ -40,29 +40,14 @@
         app:layout_constraintTop_toBottomOf="@+id/header2" />
 
     <Button
-        android:id="@+id/button3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="100dp"
-        android:background="#C86161"
-        android:text="@string/main_ordering_ny_title"
-        app:backgroundTint="#C86161"
-        app:iconTint="#DC1B1B"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
-
-    <Button
-        android:id="@+id/button"
+        android:id="@+id/menuBTN"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="100dp"
         android:layout_marginTop="30dp"
         android:layout_marginEnd="100dp"
         android:background="#C86161"
-        android:text="@string/main_ordering_chicago_title"
+        android:text="@string/main_ordering_menu_title"
         app:backgroundTint="#C86161"
         app:iconTint="#DC1B1B"
         app:layout_constraintEnd_toEndOf="parent"
@@ -74,7 +59,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="100dp"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="80dp"
         android:layout_marginEnd="100dp"
         android:fontFamily="sans-serif-black"
         android:letterSpacing="0.4"
@@ -83,10 +68,10 @@
         android:textColor="#D30909"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button3" />
+        app:layout_constraintTop_toBottomOf="@+id/menuBTN" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/currentOrdersBTN"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="100dp"
@@ -101,7 +86,7 @@
         app:layout_constraintTop_toBottomOf="@+id/header3" />
 
     <Button
-        android:id="@+id/button5"
+        android:id="@+id/storeOrdersBTN"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="100dp"
@@ -113,6 +98,6 @@
         app:iconTint="#DC1B1B"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button4" />
+        app:layout_constraintTop_toBottomOf="@+id/currentOrdersBTN" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

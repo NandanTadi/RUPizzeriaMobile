@@ -4,8 +4,7 @@
     <!-- Strings used for Main Activity -->
     <string name="main_header">RUPizzeria</string>
     <string name="main_ordering_title">Ordering</string>
-    <string name="main_ordering_ny_title">New York Style Pizza</string>
-    <string name="main_ordering_chicago_title">Chicago Style Pizza</string>
+    <string name="main_ordering_menu_title">Menu</string>
     <string name="main_orders_title">Orders</string>
     <string name="main_orders_current_title">Current Order</string>
     <string name="main_orders_store_title">Store Orders</string>
