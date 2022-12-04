@@ -23,6 +23,18 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
+        Button currentOrdersBTN = findViewById(R.id.currentOrdersBTN);
+        currentOrdersBTN.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, MenuActivity.class);
+            startActivity(intent);
+        });
+
+        Button storeOrdersBTN = findViewById(R.id.storeOrdersBTN);
+        storeOrdersBTN.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, MenuActivity.class);
+            startActivity(intent);
+        });
+
     }
 
 }
