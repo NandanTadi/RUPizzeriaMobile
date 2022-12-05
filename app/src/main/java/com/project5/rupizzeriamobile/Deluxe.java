@@ -1,11 +1,13 @@
 package com.project5.rupizzeriamobile;
 
+import java.util.Collection;
+
 /**
  * Deluxe class is essential is defining specific
  * instance of Deluxe pizza
  * @author Santosh Maryala,Nandan Tadi
  */
-public class Deluxe extends Pizza {
+public class Deluxe extends Pizza{
     private static Double PRICING_SMALL = 14.99;
     private static Double PRICING_MEDIUM = 16.99;
     private static Double PRICING_LARGE = 18.99;

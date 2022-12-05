@@ -66,12 +66,12 @@ public abstract class Pizza implements Customizable {
      * Function to identify what style the pizza is based on crust
      * @return int 0 if chicago style, 1 if not
      */
-    public int getPizzaStyle() {
+    public String getPizzaStyle() {
         if (crust == Crust.DEEP_DISH || crust == Crust.STUFFED
                 || crust == Crust.PAN) {
-            return 0;
+            return "Chicago Style";
         }
-        return 1;
+        return "New York Style";
     }
 
     /**
@@ -110,7 +110,7 @@ public abstract class Pizza implements Customizable {
      */
     public String toString(String tab) {
         StringBuilder str = new StringBuilder();
-        if (getPizzaStyle() == 0)
+        if (getPizzaStyle().equals("Chicago Style"))
             str.append(tab + "Chicago Style\t-\t");
         else
             str.append(tab + "New York Style\t-\t");
