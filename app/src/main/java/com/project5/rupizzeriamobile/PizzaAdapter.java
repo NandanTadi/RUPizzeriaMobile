@@ -77,10 +77,8 @@ public class PizzaAdapter extends RecyclerView.Adapter<PizzaAdapter.PizzaHolder>
             pizza_name = itemView.findViewById(R.id.pizza_name);
             pizza_crust = itemView.findViewById(R.id.pizza_crust);
             pizza_toppings = itemView.findViewById(R.id.pizza_toppings);
-            pizza_button = itemView.findViewById(R.id.pizza_view_btn);
             pizza_image = itemView.findViewById(R.id.pizza_image);
             parentLayout = itemView.findViewById(R.id.row_layout);
-            setAddButtonOnClick(itemView); //register the onClicklistener for the button on each row.
 
 
             /* set onClickListener for the row layout,
@@ -92,36 +90,6 @@ public class PizzaAdapter extends RecyclerView.Adapter<PizzaAdapter.PizzaHolder>
                     Intent intent = new Intent(PizzaView.getContext(), PizzaSelectedActivity.class);
                     intent.putExtra("ITEM", pizza_name.getText());
                     PizzaView.getContext().startActivity(intent);
-                }
-            });
-        }
-        /**
-         * Set the onClickListener for the button on each row.
-         * Clicking on the button will create an AlertDialog with the options of YES/NO.
-         * @param pizzaView
-         */
-        private void setAddButtonOnClick(@NonNull View pizzaView) {
-            pizza_button.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    AlertDialog.Builder alert = new AlertDialog.Builder(pizzaView.getContext());
-                    alert.setTitle("Add to order");
-                    alert.setMessage(pizza_name.getText().toString());
-                    //handle the "YES" click
-                    alert.setPositiveButton("yes", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            Toast.makeText(pizzaView.getContext(),
-                                    pizza_name.getText().toString() + " added.", Toast.LENGTH_LONG).show();
-                        }
-                        //handle the "NO" click
-                    }).setNegativeButton("no", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            Toast.makeText(pizzaView.getContext(),
-                                    pizza_name.getText().toString() + " not added.", Toast.LENGTH_LONG).show();
-                        }
-                    });
-                    AlertDialog dialog = alert.create();
-                    dialog.show();
                 }
             });
         }
