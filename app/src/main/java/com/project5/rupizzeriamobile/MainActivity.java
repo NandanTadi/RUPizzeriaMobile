@@ -3,10 +3,8 @@ package com.project5.rupizzeriamobile;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 
 
@@ -20,7 +18,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
 
         Button menuBTN = findViewById(R.id.menuBTN);
         menuBTN.setOnClickListener(v -> {
@@ -45,7 +42,4 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
-
-
-
 }
