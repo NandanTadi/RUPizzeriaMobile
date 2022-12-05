@@ -82,6 +82,15 @@ public abstract class Pizza implements Customizable {
         return this.size;
     }
 
+
+    /**
+     * Function to identify the crust of pizza
+     * @return Crust of selected pizza
+     */
+    public Crust getCrust(){
+        return this.crust;
+    }
+
     /**
      * Function to obtain all the toppings on current pizza
      * @return ArrayList of toppings
