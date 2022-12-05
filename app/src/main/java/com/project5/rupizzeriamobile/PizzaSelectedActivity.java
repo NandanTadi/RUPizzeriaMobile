@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -22,7 +23,7 @@ public class PizzaSelectedActivity extends AppCompatActivity {
     private Spinner sizeSpinner;
     private Button atcBTN;
     private Size[] items = {Size.SMALL, Size.MEDIUM, Size.LARGE};
-
+    private Intent intent = getIntent();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,11 +32,24 @@ public class PizzaSelectedActivity extends AppCompatActivity {
         totalLabel = findViewById(R.id.totalLabel);
         sizeSpinner = findViewById(R.id.sizeSpinner);
         atcBTN = findViewById(R.id.atcBtn);
-        Intent intent = getIntent();
+        addToCart(findViewById(R.id.atcBtn));
         pizzaType.setText(intent.getStringExtra("ITEM"));
         ArrayAdapter<Size> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, items);
         sizeSpinner.setAdapter(adapter);
     }
 
-    // need to do add to cart functionality
-}
+    private void addToCart(@NonNull View itemView) {
+        atcBTN.setOnClickListener(view -> {
+            Bundle args = intent.getBundleExtra("BUNDLE");
+            ArrayList<Pizza> options = (ArrayList<Pizza>) args.getSerializable("ARRAYLIST");
+            int position = intent.getIntExtra("POSITION", 0);
+            Pizza cur = options.get(position);
+            cur.setSize(items[sizeSpinner.getSelectedItemPosition()]);
+            totalLabel.setText("$" + cur.price());
+            MainActivity.pizzas.add(cur);
+            System.out.println(MainActivity.pizzas);
+        });
+    }
+
+
+    }

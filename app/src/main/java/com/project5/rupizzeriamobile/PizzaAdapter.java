@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 public class PizzaAdapter extends RecyclerView.Adapter<PizzaAdapter.PizzaHolder> {
@@ -47,12 +48,22 @@ public class PizzaAdapter extends RecyclerView.Adapter<PizzaAdapter.PizzaHolder>
      * Assign data values for each row according to their "position" (index) when the item becomes
      * visible on the screen.
      * @param holder the instance of ItemsHolder
-     * @param position the index of the item in the list of items
+     * @param position the index of the item in the list of item`s
      */
     @Override
     public void onBindViewHolder(@NonNull PizzaHolder holder, int position) {
-        //assign values for each row
-        holder.pizza_name.setText(pizzas.get(position).getPizzaStyle());
+        String special = "";
+        Pizza cur = pizzas.get(position);
+        if (cur instanceof Deluxe)
+            special = "Deluxe";
+        else if (cur instanceof BBQChicken)
+            special = "BBQChicken";
+        else if (cur instanceof Meatzza)
+            special = "Meatzza";
+        else
+            special = "BYO";
+
+        holder.pizza_name.setText(pizzas.get(position).getPizzaStyle() + " - " + special);
         holder.pizza_toppings.setText(pizzas.get(position).getToppings().toString());
         holder.pizza_crust.setText(pizzas.get(position).getCrust().toString());
     }
@@ -65,8 +76,12 @@ public class PizzaAdapter extends RecyclerView.Adapter<PizzaAdapter.PizzaHolder>
         return pizzas.size(); //number of MenuItem in the array list.
     }
 
+    public ArrayList<Pizza> getPizzaList() {
+        return pizzas;
+    }
 
-    public static class PizzaHolder extends RecyclerView.ViewHolder {
+
+    public class PizzaHolder extends RecyclerView.ViewHolder {
         private ImageView pizza_image;
         private Button pizza_button;
         private ConstraintLayout parentLayout;
@@ -89,6 +104,11 @@ public class PizzaAdapter extends RecyclerView.Adapter<PizzaAdapter.PizzaHolder>
                 public void onClick(View view) {
                     Intent intent = new Intent(PizzaView.getContext(), PizzaSelectedActivity.class);
                     intent.putExtra("ITEM", pizza_name.getText());
+                    intent.putExtra("POSITION", getLayoutPosition());
+                    Bundle args = new Bundle();
+                    args.putSerializable("ARRAYLIST",(Serializable)getPizzaList());
+                    intent.putExtra("BUNDLE",args);
+
                     PizzaView.getContext().startActivity(intent);
                 }
             });

@@ -20,9 +20,16 @@ public class MenuActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu);
-        pizzas.add(new Meatzza(Crust.BROOKLYN));
-        pizzas.add(new Deluxe(Crust.BROOKLYN));
-
+        PizzaFactory chicago = new ChicagoPizza();
+        PizzaFactory ny = new NYPizza();
+        pizzas.add(chicago.createDeluxe());
+        pizzas.add(chicago.createBBQChicken());
+        pizzas.add(chicago.createMeatzza());
+        pizzas.add(chicago.createBuildYourOwn());
+        pizzas.add(ny.createDeluxe());
+        pizzas.add(ny.createBBQChicken());
+        pizzas.add(ny.createMeatzza());
+        pizzas.add(ny.createBuildYourOwn());
         menuScroll = findViewById(R.id.menuScroll);
         menuScroll.findViewById(R.id.menuScroll);
         menuScroll.setHasFixedSize(true);

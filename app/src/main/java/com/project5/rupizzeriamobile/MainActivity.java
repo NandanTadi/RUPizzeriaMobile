@@ -7,11 +7,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 
+import java.util.ArrayList;
+
 
 public class MainActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
-
+    public static ArrayList<Pizza> pizzas;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
