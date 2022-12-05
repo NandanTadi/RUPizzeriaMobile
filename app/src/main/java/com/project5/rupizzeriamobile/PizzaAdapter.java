@@ -86,14 +86,14 @@ public class PizzaAdapter extends RecyclerView.Adapter<PizzaAdapter.PizzaHolder>
             /* set onClickListener for the row layout,
              * clicking on a row will navigate to another Activity
              */
-            /*parentLayout.setOnClickListener(new View.OnClickListener() {
+            parentLayout.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     Intent intent = new Intent(PizzaView.getContext(), PizzaSelectedActivity.class);
                     intent.putExtra("ITEM", pizza_name.getText());
                     PizzaView.getContext().startActivity(intent);
                 }
-            });*/
+            });
         }
         /**
          * Set the onClickListener for the button on each row.
