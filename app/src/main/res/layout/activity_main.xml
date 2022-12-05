@@ -44,13 +44,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="100dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="28dp"
         android:layout_marginEnd="100dp"
         android:background="#C86161"
         android:text="@string/main_ordering_menu_title"
         app:backgroundTint="#C86161"
         app:iconTint="#DC1B1B"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/header" />
 
