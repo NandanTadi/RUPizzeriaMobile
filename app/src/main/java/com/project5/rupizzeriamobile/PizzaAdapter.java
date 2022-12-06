@@ -103,14 +103,12 @@ public class PizzaAdapter extends RecyclerView.Adapter<PizzaAdapter.PizzaHolder>
                 @Override
                 public void onClick(View view) {
                     Intent intent = new Intent(context, PizzaSelectedActivity.class);
-                    intent.putExtra("ITEM", (Serializable) pizza_name.getText());
+                    intent.putExtra("ITEM", pizza_name.getText().toString());
                     intent.putExtra("POSITION", getLayoutPosition());
-                    Bundle args = new Bundle();
-                    args.putSerializable("ARRAYLIST", (Serializable) getPizzaList());
-                    intent.putExtra("BUNDLE",args);
+                    //Bundle args = new Bundle();
+                    //args.putSerializable("ARRAYLIST",  getPizzaList());
+                    //intent.putExtra("BUNDLE",args);
 
-                    System.out.println(intent);
-                    System.out.println(PizzaView.getContext());
 
                     PizzaView.getContext().startActivity(intent);
                 }

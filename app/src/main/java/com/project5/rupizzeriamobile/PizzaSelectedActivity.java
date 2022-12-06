@@ -23,9 +23,10 @@ public class PizzaSelectedActivity extends AppCompatActivity {
     private Spinner sizeSpinner;
     private Button atcBTN;
     private Size[] items = {Size.SMALL, Size.MEDIUM, Size.LARGE};
-    private Intent intent = getIntent();
+    private Intent intent;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        intent = getIntent();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.selectedpizza_view);
         pizzaType = findViewById(R.id.pizzaType);
@@ -33,6 +34,7 @@ public class PizzaSelectedActivity extends AppCompatActivity {
         sizeSpinner = findViewById(R.id.sizeSpinner);
         atcBTN = findViewById(R.id.atcBtn);
         addToCart(findViewById(R.id.atcBtn));
+        System.out.println(intent);
         pizzaType.setText(intent.getStringExtra("ITEM"));
         ArrayAdapter<Size> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, items);
         sizeSpinner.setAdapter(adapter);
@@ -40,13 +42,13 @@ public class PizzaSelectedActivity extends AppCompatActivity {
 
     private void addToCart(@NonNull View itemView) {
         atcBTN.setOnClickListener(view -> {
-            Bundle args = intent.getBundleExtra("BUNDLE");
-            ArrayList<Pizza> options = (ArrayList<Pizza>) args.getSerializable("ARRAYLIST");
+            //Bundle args = intent.getBundleExtra("BUNDLE");
+            //ArrayList<Pizza> options = (ArrayList<Pizza>) args.getSerializable("ARRAYLIST");
             int position = intent.getIntExtra("POSITION", 0);
-            Pizza cur = options.get(position);
-            cur.setSize(items[sizeSpinner.getSelectedItemPosition()]);
-            totalLabel.setText("$" + cur.price());
-            MainActivity.pizzas.add(cur);
+            //Pizza cur = options.get(position);
+            //cur.setSize(items[sizeSpinner.getSelectedItemPosition()]);
+            //totalLabel.setText("$" + cur.price());
+            //MainActivity.pizzas.add(cur);
             System.out.println(MainActivity.pizzas);
         });
     }
