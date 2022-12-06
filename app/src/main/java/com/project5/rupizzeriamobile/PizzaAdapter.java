@@ -80,7 +80,6 @@ public class PizzaAdapter extends RecyclerView.Adapter<PizzaAdapter.PizzaHolder>
         return pizzas;
     }
 
-
     public class PizzaHolder extends RecyclerView.ViewHolder {
         private ImageView pizza_image;
         private Button pizza_button;
@@ -105,9 +104,10 @@ public class PizzaAdapter extends RecyclerView.Adapter<PizzaAdapter.PizzaHolder>
                     Intent intent = new Intent(context, PizzaSelectedActivity.class);
                     intent.putExtra("ITEM", pizza_name.getText().toString());
                     intent.putExtra("POSITION", getLayoutPosition());
-                    //Bundle args = new Bundle();
-                    //args.putSerializable("ARRAYLIST",  getPizzaList());
-                    //intent.putExtra("BUNDLE",args);
+                    intent.putExtra("PIZZA", (Serializable) getPizzaList().get(getLayoutPosition()));
+                    // Bundle args = new Bundle();
+                    // args.putSerializable("ARRAYLIST",  getPizzaList());
+                    // intent.putExtra("BUNDLE",args);
 
 
                     PizzaView.getContext().startActivity(intent);

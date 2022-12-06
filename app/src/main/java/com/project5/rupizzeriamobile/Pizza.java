@@ -1,5 +1,6 @@
 package com.project5.rupizzeriamobile;
 
+import java.io.Serializable;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
@@ -9,7 +10,7 @@ import java.util.ArrayList;
  * @author Santosh Maryala,Nandan Tadi
  */
 
-public abstract class Pizza implements Customizable {
+public abstract class Pizza implements Customizable, Serializable {
     private ArrayList<Topping> toppings;
     private Crust crust;
     private Size size;

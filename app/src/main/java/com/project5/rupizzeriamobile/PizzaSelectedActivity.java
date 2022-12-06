@@ -36,20 +36,17 @@ public class PizzaSelectedActivity extends AppCompatActivity {
         addToCart(findViewById(R.id.atcBtn));
         System.out.println(intent);
         pizzaType.setText(intent.getStringExtra("ITEM"));
+
         ArrayAdapter<Size> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, items);
         sizeSpinner.setAdapter(adapter);
     }
 
     private void addToCart(@NonNull View itemView) {
         atcBTN.setOnClickListener(view -> {
-            //Bundle args = intent.getBundleExtra("BUNDLE");
-            //ArrayList<Pizza> options = (ArrayList<Pizza>) args.getSerializable("ARRAYLIST");
-            int position = intent.getIntExtra("POSITION", 0);
-            //Pizza cur = options.get(position);
-            //cur.setSize(items[sizeSpinner.getSelectedItemPosition()]);
-            //totalLabel.setText("$" + cur.price());
-            //MainActivity.pizzas.add(cur);
-            System.out.println(MainActivity.pizzas);
+            Pizza cur = (Pizza) intent.getSerializableExtra("PIZZA");
+            cur.setSize(items[sizeSpinner.getSelectedItemPosition()]);
+            totalLabel.setText("$" + cur.price());
+            MainActivity.pizzas.add(cur);
         });
     }
 

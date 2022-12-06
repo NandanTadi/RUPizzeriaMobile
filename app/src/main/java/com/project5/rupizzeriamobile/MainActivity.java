@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
-    public static ArrayList<Pizza> pizzas;
+    public static ArrayList<Pizza> pizzas = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
 
         Button currentOrdersBTN = findViewById(R.id.currentOrdersBTN);
         currentOrdersBTN.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this, MenuActivity.class);
+            Intent intent = new Intent(MainActivity.this, CurrentOrdersActivity.class);
             startActivity(intent);
         });
 
