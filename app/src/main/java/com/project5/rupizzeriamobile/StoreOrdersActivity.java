@@ -23,10 +23,16 @@ public class StoreOrdersActivity extends AppCompatActivity implements AdapterVie
      * Initial setup for the Views and the adapter for the ListView
      * @param savedInstanceState
      */
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        setContentView(R.layout.store_activity);
+        //adapter = new ArrayAdapter<Object>(this, );
+        listview = findViewById(R.id.store_order_list);
+        System.out.println(listview);
+        listview.setOnItemClickListener(this); //register the listener for an OnItemClick event.
+        listview.setAdapter(adapter);
     }
 
     @Override

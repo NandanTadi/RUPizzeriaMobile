@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
 
         Button storeOrdersBTN = findViewById(R.id.storeOrdersBTN);
         storeOrdersBTN.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this, MenuActivity.class);
+            Intent intent = new Intent(MainActivity.this, StoreOrdersActivity.class);
             startActivity(intent);
         });
 

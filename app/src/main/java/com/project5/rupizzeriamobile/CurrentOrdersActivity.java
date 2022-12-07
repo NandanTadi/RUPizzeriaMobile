@@ -1,7 +1,5 @@
 package com.project5.rupizzeriamobile;
 
-import android.annotation.SuppressLint;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
@@ -13,11 +11,10 @@ import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.util.Collections;
-
 public class CurrentOrdersActivity extends AppCompatActivity implements AdapterView.OnItemClickListener{
     private ListView listview;
     private ArrayAdapter<Object> adapter;
+
 
     /**
      * Initial setup for the Views and the adapter for the ListView
@@ -29,7 +26,6 @@ public class CurrentOrdersActivity extends AppCompatActivity implements AdapterV
         setContentView(R.layout.current_activity);
         adapter = new ArrayAdapter<Object>(this, android.R.layout.simple_list_item_1, MainActivity.pizzas.toArray());
         listview = findViewById(R.id.current_order_list);
-        System.out.println(listview);
         listview.setOnItemClickListener(this); //register the listener for an OnItemClick event.
         listview.setAdapter(adapter);
     }
