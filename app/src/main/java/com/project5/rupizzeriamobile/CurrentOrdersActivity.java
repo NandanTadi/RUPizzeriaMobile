@@ -1,19 +1,25 @@
 package com.project5.rupizzeriamobile;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.HashMap;
+
 public class CurrentOrdersActivity extends AppCompatActivity implements AdapterView.OnItemClickListener{
     private ListView listview;
     private ArrayAdapter<Object> adapter;
+    private static Order order = new Order();
+    public int id = 0;
 
 
     /**
@@ -28,6 +34,26 @@ public class CurrentOrdersActivity extends AppCompatActivity implements AdapterV
         listview = findViewById(R.id.current_order_list);
         listview.setOnItemClickListener(this); //register the listener for an OnItemClick event.
         listview.setAdapter(adapter);
+
+        Button placeOrderBTN = findViewById(R.id.place_order_button);
+        placeOrderBTN.setOnClickListener(v -> {
+            if(MainActivity.pizzas.size() > 0){
+                Order current = new Order(order);
+                MainActivity.orders.put(id, current);
+                id += 1;
+                current = new Order();
+            }
+            Intent intent = new Intent(CurrentOrdersActivity.this, StoreOrdersActivity.class);
+            startActivity(intent);
+
+        });
+
+        Button clearOrdersBTN = findViewById(R.id.clear_order);
+        clearOrdersBTN.setOnClickListener(v -> {
+            MainActivity.pizzas.clear();
+            Intent intent = new Intent(CurrentOrdersActivity.this, MainActivity.class);
+            startActivity(intent);
+        });
     }
 
     @Override
@@ -50,4 +76,6 @@ public class CurrentOrdersActivity extends AppCompatActivity implements AdapterV
         AlertDialog dialog = alert.create();
         dialog.show();
     }
+
+
 }

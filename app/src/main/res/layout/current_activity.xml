@@ -19,11 +19,21 @@
 
     <Button
         android:id="@+id/place_order_button"
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="150dp"
+        android:layout_marginStart="96dp"
         android:layout_marginTop="600dp"
         android:text="@string/place_order_title"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/clear_order"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="26dp"
+        android:text="@string/clear_order_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/current_order_list" />
 </androidx.constraintlayout.widget.ConstraintLayout>

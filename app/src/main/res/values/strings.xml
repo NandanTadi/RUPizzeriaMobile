@@ -9,6 +9,7 @@
     <string name="main_orders_current_title">Current Order</string>
     <string name="main_orders_store_title">Store Orders</string>
     <string name="place_order_title">Place Order</string>
+    <string name="clear_order_title">Clear Order</string>
 
 
 

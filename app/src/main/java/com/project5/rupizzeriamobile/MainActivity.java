@@ -8,12 +8,14 @@ import android.os.Bundle;
 import android.widget.Button;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 
 public class MainActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     public static ArrayList<Pizza> pizzas = new ArrayList<>();
+    public static HashMap<Integer, Order> orders = new HashMap<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

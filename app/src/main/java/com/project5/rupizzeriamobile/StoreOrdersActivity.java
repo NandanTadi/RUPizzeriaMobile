@@ -14,6 +14,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Collections;
+import java.util.List;
 
 public class StoreOrdersActivity extends AppCompatActivity implements AdapterView.OnItemClickListener{
     private ListView listview;
@@ -28,7 +29,7 @@ public class StoreOrdersActivity extends AppCompatActivity implements AdapterVie
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.store_activity);
-        //adapter = new ArrayAdapter<Object>(this, );
+        adapter = new ArrayAdapter<Object>((Context) this, android.R.layout.simple_list_item_1, (List<Object>) MainActivity.orders.values().stream());
         listview = findViewById(R.id.store_order_list);
         System.out.println(listview);
         listview.setOnItemClickListener(this); //register the listener for an OnItemClick event.
