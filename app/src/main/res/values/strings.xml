@@ -10,7 +10,7 @@
     <string name="main_orders_store_title">Store Orders</string>
     <string name="place_order_title">Place Order</string>
     <string name="clear_order_title">Clear Order</string>
-
+    <string name="add_to_cart">Add to Cart</string>
 
 
 </resources>

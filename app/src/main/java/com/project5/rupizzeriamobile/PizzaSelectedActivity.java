@@ -3,6 +3,7 @@ package com.project5.rupizzeriamobile;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
@@ -24,6 +25,7 @@ public class PizzaSelectedActivity extends AppCompatActivity {
     private Button atcBTN;
     private Size[] items = {Size.SMALL, Size.MEDIUM, Size.LARGE};
     private Intent intent;
+    private Pizza cur;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         intent = getIntent();
@@ -39,13 +41,25 @@ public class PizzaSelectedActivity extends AppCompatActivity {
 
         ArrayAdapter<Size> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, items);
         sizeSpinner.setAdapter(adapter);
-    }
+        cur = (Pizza) intent.getSerializableExtra("PIZZA");
+        cur.setSize(items[sizeSpinner.getSelectedItemPosition()]);
+        totalLabel.setText("$" + cur.price());
+        sizeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                cur.setSize(items[sizeSpinner.getSelectedItemPosition()]);
+                totalLabel.setText("$" + cur.price());
+            }
 
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+    }
     private void addToCart(@NonNull View itemView) {
         atcBTN.setOnClickListener(view -> {
-            Pizza cur = (Pizza) intent.getSerializableExtra("PIZZA");
-            cur.setSize(items[sizeSpinner.getSelectedItemPosition()]);
-            totalLabel.setText("$" + cur.price());
             MainActivity.pizzas.add(cur);
         });
     }

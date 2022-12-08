@@ -64,7 +64,10 @@ public class PizzaAdapter extends RecyclerView.Adapter<PizzaAdapter.PizzaHolder>
             special = "BYO";
 
         holder.pizza_name.setText(pizzas.get(position).getPizzaStyle() + " - " + special);
-        holder.pizza_toppings.setText(pizzas.get(position).getToppings().toString());
+        holder.pizza_toppings.setText("[CUSTOM PIZZA - SELECT TOPPINGS]");
+        String temp = pizzas.get(position).getToppings().toString();
+        if (temp != "[]")
+            holder.pizza_toppings.setText(temp);
         holder.pizza_crust.setText(pizzas.get(position).getCrust().toString());
     }
 
@@ -105,10 +108,6 @@ public class PizzaAdapter extends RecyclerView.Adapter<PizzaAdapter.PizzaHolder>
                     intent.putExtra("ITEM", pizza_name.getText().toString());
                     intent.putExtra("POSITION", getLayoutPosition());
                     intent.putExtra("PIZZA", (Serializable) getPizzaList().get(getLayoutPosition()));
-                    // Bundle args = new Bundle();
-                    // args.putSerializable("ARRAYLIST",  getPizzaList());
-                    // intent.putExtra("BUNDLE",args);
-
 
                     PizzaView.getContext().startActivity(intent);
                 }
