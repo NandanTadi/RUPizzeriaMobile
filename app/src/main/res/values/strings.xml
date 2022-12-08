@@ -14,9 +14,27 @@
     <string name="subtotal_title">Subtotal $: </string>
     <string name="tax_title">Sales Tax $: </string>
     <string name="total_title">Total $: </string>
+    <string name="placeholder_money">0.00</string>
     <string name="placeholder"> placeholder </string>
+    <string name="pie_cost_label">Pie Cost: $ </string>
+    <string name="add_toppings_label">Add. Toppings: $ </string>
+    <string name="total_pie_cost_label">Total Pie Cost: $ </string>
     <string name="total_orders"> Total # Orders: </string>
     <string name="order_total"> Order Total $:  </string>
 
+    <!-- Strings for Toppings -->
+    <string name="bbq_chicken_topping">BBQ Chicken</string>
+    <string name="pepperoni_topping">Pepperoni</string>
+    <string name="ham_topping">Ham</string>
+    <string name="sausage_topping">Sausage</string>
+    <string name="bacon_topping">Bacon</string>
+    <string name="mushrooms_topping">Mushrooms</string>
+    <string name="onions_topping">Onions</string>
+    <string name="jalapeno_topping">Jalapeno</string>
+    <string name="cheddar_topping">Cheddar</string>
+    <string name="pineapple_topping">Pineapple</string>
+    <string name="provolone_topping">Provolone</string>
+    <string name="green_peppers_topping">Green Peppers</string>
+    <string name="beef_topping">Beef</string>
 
 </resources>

@@ -49,39 +49,196 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="150dp"
         android:layout_marginEnd="150dp"
-        android:layout_marginBottom="80dp"
+        android:layout_marginBottom="56dp"
         android:text="@string/add_to_cart"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.45"
+        app:layout_constraintHorizontal_bias="0.434"
         app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="171dp"
-        android:layout_marginEnd="171dp"
-        android:text="Pizza Price"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="534dp" />
 
     <TextView
         android:id="@+id/totalLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="191dp"
-        android:layout_marginTop="11dp"
-        android:layout_marginEnd="192dp"
-        android:text="total"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/placeholder_money"
+        app:layout_constraintStart_toEndOf="@+id/textView3"
+        app:layout_constraintTop_toBottomOf="@+id/toppingsGrid" />
+
+    <TableLayout
+        android:id="@+id/toppingsGrid"
+        android:layout_width="411dp"
+        android:layout_height="233dp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/textView3"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sizeSpinner">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <CheckBox
+                android:id="@+id/hamCB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="cbClicked"
+                android:text="@string/ham_topping" />
+
+            <CheckBox
+                android:id="@+id/chickenCB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="cbClicked"
+                android:text="@string/bbq_chicken_topping" />
+
+            <CheckBox
+                android:id="@+id/pepperoniCB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="cbClicked"
+                android:text="@string/pepperoni_topping" />
+
+            <CheckBox
+                android:id="@+id/sausageCB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="cbClicked"
+                android:text="@string/sausage_topping" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <CheckBox
+                android:id="@+id/baconCB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="cbClicked"
+                android:text="@string/bacon_topping" />
+
+            <CheckBox
+                android:id="@+id/mushroomsCB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="cbClicked"
+                android:text="@string/mushrooms_topping" />
+
+            <CheckBox
+                android:id="@+id/onionsCB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="cbClicked"
+                android:text="@string/onions_topping" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <CheckBox
+                android:id="@+id/cheddarCB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="cbClicked"
+                android:text="@string/cheddar_topping" />
+
+            <CheckBox
+                android:id="@+id/pineappleCB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="cbClicked"
+                android:text="@string/pineapple_topping" />
+
+            <CheckBox
+                android:id="@+id/provoloneCB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="cbClicked"
+                android:text="@string/provolone_topping" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <CheckBox
+                android:id="@+id/beefCB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="cbClicked"
+                android:text="@string/beef_topping" />
+
+            <CheckBox
+                android:id="@+id/greenpepersCB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="cbClicked"
+                android:text="@string/green_peppers_topping" />
+
+            <CheckBox
+                android:id="@+id/jalapenoCB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="cbClicked"
+                android:text="@string/jalapeno_topping" />
+        </TableRow>
+
+    </TableLayout>
+
+    <TextView
+        android:id="@+id/addTopCostLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/placeholder_money"
+        app:layout_constraintStart_toEndOf="@+id/textView8"
+        app:layout_constraintTop_toBottomOf="@+id/totalLabel" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="124dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/total_pie_cost_label"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="160dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/pie_cost_label"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toppingsGrid" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="120dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/add_toppings_label"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
-    <GridView
-        android:layout_width="409dp"
-        android:layout_height="244dp"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="289dp" />
+    <TextView
+        android:id="@+id/totalPieCostLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/placeholder_money"
+        app:layout_constraintStart_toEndOf="@+id/textView10"
+        app:layout_constraintTop_toBottomOf="@+id/addTopCostLabel" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
