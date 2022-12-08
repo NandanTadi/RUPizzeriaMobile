@@ -55,7 +55,7 @@ public class StoreOrdersActivity extends AppCompatActivity implements AdapterVie
                 MainActivity.storeOrder.storeOrders.remove(i);
                 displayLabels();
                 Toast.makeText(getApplicationContext(), "Order successfully removed!", Toast.LENGTH_LONG).show();
-                Intent intent = new Intent(StoreOrdersActivity.this, StoreOrdersActivity.class);
+                Intent intent = new Intent(StoreOrdersActivity.this, MainActivity.class);
                 startActivity(intent);
             }
         }).setNegativeButton("no", new DialogInterface.OnClickListener() {

@@ -142,6 +142,8 @@ public class PizzaSelectedActivity extends AppCompatActivity {
                 ((BuildYourOwn) cur).setToppingPrice(cbClicked(temp));
             }
             MainActivity.pizzas.add(cur);
+            Intent intent = new Intent(PizzaSelectedActivity.this, MainActivity.class);
+            startActivity(intent);
         });
     }
 

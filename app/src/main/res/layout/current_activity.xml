@@ -22,8 +22,8 @@
         android:id="@+id/place_order_button"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="96dp"
-        android:layout_marginTop="650dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="652dp"
         android:text="@string/place_order_title"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -32,10 +32,10 @@
         android:id="@+id/clear_order"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="250dp"
-        android:layout_marginEnd="26dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="240dp"
         android:text="@string/clear_order_title"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/place_order_button"
         app:layout_constraintTop_toBottomOf="@+id/current_order_list" />
 
     <TextView

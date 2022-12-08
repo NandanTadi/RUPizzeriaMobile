@@ -56,9 +56,13 @@ public class CurrentOrdersActivity extends AppCompatActivity implements AdapterV
                 current.setPrice(updatePricing());
                 MainActivity.storeOrder.add(current);
                 MainActivity.pizzas = new Order();
+                Intent intent = new Intent(CurrentOrdersActivity.this, StoreOrdersActivity.class);
+                startActivity(intent);
             }
-            Intent intent = new Intent(CurrentOrdersActivity.this, StoreOrdersActivity.class);
-            startActivity(intent);
+            else{
+                Toast.makeText(getApplicationContext(), "Cart is empty!", Toast.LENGTH_LONG).show();
+
+            }
         });
         Button clearOrdersBTN = findViewById(R.id.clear_order);
         clearOrdersBTN.setOnClickListener(v -> {
@@ -79,7 +83,7 @@ public class CurrentOrdersActivity extends AppCompatActivity implements AdapterV
                 MainActivity.pizzas.getCurrentOrder().remove(i);
                 Toast.makeText(getApplicationContext(), "Pizza successfully removed!", Toast.LENGTH_LONG).show();
                 updatePricing();
-                Intent intent = new Intent(CurrentOrdersActivity.this, CurrentOrdersActivity.class);
+                Intent intent = new Intent(CurrentOrdersActivity.this, MainActivity.class);
                 startActivity(intent);
             }
         }).setNegativeButton("no", new DialogInterface.OnClickListener() {
