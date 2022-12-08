@@ -33,4 +33,12 @@ public class StoreOrder implements Customizable{
         storeOrders.remove(obj);
         return true;
     }
+
+    public double getTotalPrice(){
+        double total = 0;
+        for (Order order : storeOrders){
+            total += order.getPrice();
+        }
+        return total;
+    }
 }

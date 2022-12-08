@@ -16,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import org.w3c.dom.Text;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.stream.Collectors;
@@ -27,6 +28,7 @@ public class CurrentOrdersActivity extends AppCompatActivity implements AdapterV
     private TextView subtotal_value;
     private TextView tax_value;
     private TextView total_value;
+    private DecimalFormat df = new DecimalFormat("#.##");
 
     public CurrentOrdersActivity() {
     }
@@ -78,14 +80,14 @@ public class CurrentOrdersActivity extends AppCompatActivity implements AdapterV
         alert.setPositiveButton("yes", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
                 MainActivity.pizzas.getCurrentOrder().remove(i);
-                Toast.makeText(getApplicationContext(), "Successfully Removed!", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Pizza successfully removed!", Toast.LENGTH_LONG).show();
                 updatePricing();
                 Intent intent = new Intent(CurrentOrdersActivity.this, CurrentOrdersActivity.class);
                 startActivity(intent);
             }
         }).setNegativeButton("no", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
-                Toast.makeText(getApplicationContext(), "Pizza Was Not Removed!", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Pizza was not removed!", Toast.LENGTH_LONG).show();
             }
         });
         AlertDialog dialog = alert.create();
@@ -101,11 +103,11 @@ public class CurrentOrdersActivity extends AppCompatActivity implements AdapterV
         for(Pizza i: MainActivity.pizzas.getCurrentOrder()) {
             subtotal += i.price();
         }
-        subtotal_value.setText("" + subtotal);
+        subtotal_value.setText("" + df.format(subtotal));
         double tax = subtotal * 0.06625;
-        tax_value.setText("" + tax);
+        tax_value.setText("" + df.format(tax));
         double total = subtotal + tax;
-        total_value.setText("" + total);
+        total_value.setText("" + df.format(total));
         return total;
     }
 

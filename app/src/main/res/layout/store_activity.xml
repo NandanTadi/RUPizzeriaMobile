@@ -8,9 +8,50 @@
     <ListView
         android:id="@+id/store_order_list"
         android:layout_width="409dp"
-        android:layout_height="729dp"
+        android:layout_height="500dp"
+        android:layout_marginBottom="225dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/total_orders"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="57dp"
+        android:text="@string/total_orders"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/store_order_list" />
+
+    <TextView
+        android:id="@+id/order_total_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="34dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/order_total"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/total_orders" />
+
+    <TextView
+        android:id="@+id/number_orders_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="58dp"
+        android:text="@string/placeholder"
+        app:layout_constraintStart_toEndOf="@+id/total_orders"
+        app:layout_constraintTop_toBottomOf="@+id/store_order_list" />
+
+    <TextView
+        android:id="@+id/order_total_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="15dp"
+        android:text="@string/placeholder"
+        app:layout_constraintStart_toEndOf="@+id/order_total_label"
+        app:layout_constraintTop_toBottomOf="@+id/number_orders_value" />
 </androidx.constraintlayout.widget.ConstraintLayout>
