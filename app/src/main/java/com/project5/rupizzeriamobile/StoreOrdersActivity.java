@@ -24,7 +24,6 @@ public class StoreOrdersActivity extends AppCompatActivity implements AdapterVie
      * Initial setup for the Views and the adapter for the ListView
      * @param savedInstanceState
      */
-    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

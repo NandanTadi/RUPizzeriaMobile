@@ -13,7 +13,9 @@ import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.stream.Collectors;
 
 public class CurrentOrdersActivity extends AppCompatActivity implements AdapterView.OnItemClickListener{
     private ListView listview;
@@ -30,7 +32,8 @@ public class CurrentOrdersActivity extends AppCompatActivity implements AdapterV
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.current_activity);
-        adapter = new ArrayAdapter<Object>(this, android.R.layout.simple_list_item_1, MainActivity.pizzas.toArray());
+        adapter = new ArrayAdapter<Object>(this, android.R.layout.simple_list_item_1,
+                MainActivity.pizzas.stream().map(x -> x.toString("")).collect(Collectors.toList()));
         listview = findViewById(R.id.current_order_list);
         listview.setOnItemClickListener(this); //register the listener for an OnItemClick event.
         listview.setAdapter(adapter);
@@ -67,6 +70,8 @@ public class CurrentOrdersActivity extends AppCompatActivity implements AdapterV
                 MainActivity.pizzas.remove(i);
                 System.out.println(MainActivity.pizzas);
                 Toast.makeText(getApplicationContext(), "Successfully Removed!", Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(CurrentOrdersActivity.this, CurrentOrdersActivity.class);
+                startActivity(intent);
             }
         }).setNegativeButton("no", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
