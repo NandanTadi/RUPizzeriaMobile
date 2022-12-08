@@ -11,6 +11,7 @@ import java.util.HashMap;
 
 public class StoreOrder implements Customizable{
     protected ArrayList<Order> storeOrders = new ArrayList<>();
+    private int counter = 0;
 
     /**
      * Function to add an order into the hashmap with unique order ids
@@ -20,6 +21,8 @@ public class StoreOrder implements Customizable{
     @Override
     public boolean add(Object obj) {
         storeOrders.add((Order) obj);
+        storeOrders.get(storeOrders.indexOf(obj)).setOrderNumber(counter);
+        counter += 1;
         return true;
     }
 

@@ -15,7 +15,7 @@ public class Order implements Customizable{
     private ArrayList<Pizza> currentOrder;
     private double price;
     private DecimalFormat df = new DecimalFormat("#.##");
-    private int orderNumber;
+    public int orderNumber;
 
     /**
      * Default constructor to initialize currentOrder list of pizzas
@@ -44,8 +44,12 @@ public class Order implements Customizable{
         return true;
     }
 
-    public void setOrderNumber(int id){
-        this.orderNumber = id;
+    public void setOrderNumber(int orderNumber){
+        this.orderNumber = orderNumber;
+    }
+
+    public int getOrderNumber(){
+        return this.orderNumber;
     }
 
     /**

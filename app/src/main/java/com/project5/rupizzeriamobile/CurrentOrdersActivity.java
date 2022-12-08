@@ -24,7 +24,6 @@ import java.util.stream.Collectors;
 public class CurrentOrdersActivity extends AppCompatActivity implements AdapterView.OnItemClickListener{
     private ListView listview;
     private ArrayAdapter<Object> adapter;
-    private int id = 0;
     private TextView subtotal_value;
     private TextView tax_value;
     private TextView total_value;
@@ -54,10 +53,8 @@ public class CurrentOrdersActivity extends AppCompatActivity implements AdapterV
         placeOrderBTN.setOnClickListener(v -> {
             if(MainActivity.pizzas.getCurrentOrder().size() > 0){
                 Order current = new Order(MainActivity.pizzas);
-                current.setOrderNumber(id);
                 current.setPrice(updatePricing());
                 MainActivity.storeOrder.add(current);
-                id++;
                 MainActivity.pizzas = new Order();
             }
             Intent intent = new Intent(CurrentOrdersActivity.this, StoreOrdersActivity.class);
