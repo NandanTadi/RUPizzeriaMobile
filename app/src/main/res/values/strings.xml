@@ -14,5 +14,7 @@
     <string name="subtotal_title">Subtotal $: </string>
     <string name="tax_title">Sales Tax $: </string>
     <string name="total_title">Total $: </string>
+    <string name="placeholder"> placeholder </string>
+
 
 </resources>

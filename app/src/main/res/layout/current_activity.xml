@@ -39,11 +39,11 @@
         app:layout_constraintTop_toBottomOf="@+id/current_order_list" />
 
     <TextView
-        android:id="@+id/textView4"
-        android:layout_width="150dp"
+        android:id="@+id/subtotal"
+        android:layout_width="80dp"
         android:layout_height="20dp"
-        android:layout_marginTop="56dp"
-        android:layout_marginEnd="221dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="288dp"
         android:text="@string/subtotal_title"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/current_order_list" />
@@ -56,16 +56,46 @@
         android:layout_marginEnd="293dp"
         android:text="@string/tax_title"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        app:layout_constraintTop_toBottomOf="@+id/subtotal" />
 
     <TextView
         android:id="@+id/textView7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="17dp"
-        android:layout_marginEnd="323dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="320dp"
         android:text="@string/total_title"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+    <TextView
+        android:id="@+id/subtotal_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="64dp"
+        android:text="@string/placeholder"
+        app:layout_constraintStart_toEndOf="@+id/subtotal"
+        app:layout_constraintTop_toBottomOf="@+id/current_order_list" />
+
+    <TextView
+        android:id="@+id/tax_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="13dp"
+        android:layout_marginTop="18dp"
+        android:text="@string/placeholder"
+        app:layout_constraintStart_toEndOf="@+id/textView6"
+        app:layout_constraintTop_toBottomOf="@+id/subtotal_value" />
+
+    <TextView
+        android:id="@+id/total_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/placeholder"
+        app:layout_constraintStart_toEndOf="@+id/textView7"
+        app:layout_constraintTop_toBottomOf="@+id/tax_value" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

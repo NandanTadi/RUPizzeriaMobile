@@ -8,10 +8,13 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -21,7 +24,12 @@ public class CurrentOrdersActivity extends AppCompatActivity implements AdapterV
     private ListView listview;
     private ArrayAdapter<Object> adapter;
     private int id = 0;
+    private TextView subtotal_value;
+    private TextView tax_value;
+    private TextView total_value;
 
+    public CurrentOrdersActivity() {
+    }
 
     /**
      * Initial setup for the Views and the adapter for the ListView
@@ -36,8 +44,11 @@ public class CurrentOrdersActivity extends AppCompatActivity implements AdapterV
         listview = findViewById(R.id.current_order_list);
         listview.setOnItemClickListener(this); //register the listener for an OnItemClick event.
         listview.setAdapter(adapter);
-
+        subtotal_value = findViewById(R.id.subtotal_value);
+        tax_value = findViewById(R.id.tax_value);
+        total_value = findViewById(R.id.total_value);
         Button placeOrderBTN = findViewById(R.id.place_order_button);
+        updatePricing();
         placeOrderBTN.setOnClickListener(v -> {
             if(MainActivity.pizzas.getCurrentOrder().size() > 0){
                 Order current = new Order(MainActivity.pizzas);
@@ -49,17 +60,13 @@ public class CurrentOrdersActivity extends AppCompatActivity implements AdapterV
             }
             Intent intent = new Intent(CurrentOrdersActivity.this, StoreOrdersActivity.class);
             startActivity(intent);
-
         });
-
         Button clearOrdersBTN = findViewById(R.id.clear_order);
         clearOrdersBTN.setOnClickListener(v -> {
             MainActivity.pizzas.getCurrentOrder().clear();
             Intent intent = new Intent(CurrentOrdersActivity.this, MainActivity.class);
             startActivity(intent);
         });
-
-
     }
 
     @Override
@@ -72,6 +79,7 @@ public class CurrentOrdersActivity extends AppCompatActivity implements AdapterV
             public void onClick(DialogInterface dialog, int which) {
                 MainActivity.pizzas.getCurrentOrder().remove(i);
                 Toast.makeText(getApplicationContext(), "Successfully Removed!", Toast.LENGTH_LONG).show();
+                updatePricing();
                 Intent intent = new Intent(CurrentOrdersActivity.this, CurrentOrdersActivity.class);
                 startActivity(intent);
             }
@@ -93,9 +101,11 @@ public class CurrentOrdersActivity extends AppCompatActivity implements AdapterV
         for(Pizza i: MainActivity.pizzas.getCurrentOrder()) {
             subtotal += i.price();
         }
+        subtotal_value.setText("" + subtotal);
         double tax = subtotal * 0.06625;
-
+        tax_value.setText("" + tax);
         double total = subtotal + tax;
+        total_value.setText("" + total);
         return total;
     }
 
