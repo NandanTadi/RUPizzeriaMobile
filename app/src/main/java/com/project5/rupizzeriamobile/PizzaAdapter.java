@@ -54,14 +54,22 @@ public class PizzaAdapter extends RecyclerView.Adapter<PizzaAdapter.PizzaHolder>
     public void onBindViewHolder(@NonNull PizzaHolder holder, int position) {
         String special = "";
         Pizza cur = pizzas.get(position);
-        if (cur instanceof Deluxe)
+        if (cur instanceof Deluxe) {
+            holder.pizza_image.setImageResource(R.drawable.deluxe);
             special = "Deluxe";
-        else if (cur instanceof BBQChicken)
+        }
+        else if (cur instanceof BBQChicken) {
+            holder.pizza_image.setImageResource(R.drawable.bbqchicken);
             special = "BBQChicken";
-        else if (cur instanceof Meatzza)
+        }
+        else if (cur instanceof Meatzza) {
+            holder.pizza_image.setImageResource(R.drawable.meatzza);
             special = "Meatzza";
-        else
+        }
+        else {
+            holder.pizza_image.setImageResource(R.drawable.byo);
             special = "BYO";
+        }
 
         holder.pizza_name.setText(pizzas.get(position).getPizzaStyle() + " - " + special);
         holder.pizza_toppings.setText("[CUSTOM PIZZA - SELECT TOPPINGS]");

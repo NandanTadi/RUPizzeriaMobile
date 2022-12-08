@@ -1,6 +1,7 @@
 package com.project5.rupizzeriamobile;
 
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -146,6 +147,4 @@ public class PizzaSelectedActivity extends AppCompatActivity {
             startActivity(intent);
         });
     }
-
-
-    }
+}
