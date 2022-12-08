@@ -28,7 +28,7 @@ public class StoreOrdersActivity extends AppCompatActivity implements AdapterVie
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.store_activity);
-        adapter = new ArrayAdapter<Object>((Context) this, android.R.layout.simple_list_item_1, (List<Object>) MainActivity.orders.values().stream());
+        adapter = new ArrayAdapter<Object>((Context) this, android.R.layout.simple_list_item_1, MainActivity.storeOrder.storeOrders.toArray());
         listview = findViewById(R.id.store_order_list);
         System.out.println(listview);
         listview.setOnItemClickListener(this); //register the listener for an OnItemClick event.

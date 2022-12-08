@@ -14,7 +14,8 @@ import java.util.HashMap;
 public class MainActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
-    public static ArrayList<Pizza> pizzas = new ArrayList<>();
+    public static Order pizzas = new Order();
+    public static StoreOrder storeOrder = new StoreOrder();
     public static HashMap<Integer, Order> orders = new HashMap<>();
 
     @Override

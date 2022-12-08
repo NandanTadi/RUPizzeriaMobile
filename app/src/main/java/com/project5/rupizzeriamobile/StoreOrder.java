@@ -1,5 +1,7 @@
 package com.project5.rupizzeriamobile;
 
+import java.sql.Array;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
@@ -8,8 +10,7 @@ import java.util.HashMap;
  */
 
 public class StoreOrder implements Customizable{
-    protected HashMap<Integer, Order> storeOrders = new HashMap<>();
-    private int count = 0;
+    protected ArrayList<Order> storeOrders = new ArrayList<>();
 
     /**
      * Function to add an order into the hashmap with unique order ids
@@ -18,8 +19,7 @@ public class StoreOrder implements Customizable{
      */
     @Override
     public boolean add(Object obj) {
-        storeOrders.put(count, (Order) obj);
-        count++;
+        storeOrders.add((Order) obj);
         return true;
     }
 

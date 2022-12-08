@@ -15,6 +15,7 @@ public class Order implements Customizable{
     private ArrayList<Pizza> currentOrder;
     private double price;
     private DecimalFormat df = new DecimalFormat("#.##");
+    private int orderNumber;
 
     /**
      * Default constructor to initialize currentOrder list of pizzas
@@ -41,6 +42,10 @@ public class Order implements Customizable{
     public boolean add(Object obj) {
         currentOrder.add((Pizza) obj);
         return true;
+    }
+
+    public void setOrderNumber(int id){
+        this.orderNumber = id;
     }
 
     /**
@@ -81,13 +86,12 @@ public class Order implements Customizable{
     /**
      * toString method to help display order details and
      * pricing in currentOrder
-     * @param orderID to be displayed
      * @return String value built
      */
-    public String toString(int orderID) {
+    public String toString() {
         StringBuilder str = new StringBuilder();
-        str.append("Order ID: " + orderID);
-        str.append("\nOrder Subtotal: $" + df.format(this.price));
+        str.append("Order ID: " + orderNumber);
+        str.append("\nOrder Total: $" + df.format(this.price));
         str.append("\nOrder Details:\n");
         int count = 1;
         for (Pizza i: currentOrder) {
