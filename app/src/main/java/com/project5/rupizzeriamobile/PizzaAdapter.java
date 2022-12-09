@@ -19,10 +19,20 @@ import android.widget.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class PizzaAdapter extends RecyclerView.Adapter<PizzaAdapter.PizzaHolder> {
-    private Context context; //need the context to inflate the layout
-    private ArrayList<Pizza> pizzas; //need the data binding to each row of RecyclerView
+/**
+ * PizzaAdapter class is essential to instantiate an adapter for the Recycler view used for Pizzas
+ * @author Santosh Maryala, Nandan Tadi
+ */
 
+public class PizzaAdapter extends RecyclerView.Adapter<PizzaAdapter.PizzaHolder> {
+    private Context context;
+    private ArrayList<Pizza> pizzas;
+
+    /**
+     * Constructor to initialize the context layout and pizzas list
+     * @param context layout
+     * @param pizzas list to be displayed in recycler view
+     */
     public PizzaAdapter(Context context, ArrayList<Pizza> pizzas) {
         this.context = context;
         this.pizzas = pizzas;
@@ -30,9 +40,9 @@ public class PizzaAdapter extends RecyclerView.Adapter<PizzaAdapter.PizzaHolder>
 
     /**
      * This method will inflate the row layout for the items in the RecyclerView
-     * @param parent
-     * @param viewType
-     * @return
+     * @param parent ViewGroup
+     * @param viewType integer value
+     * @return PizzaHolder object
      */
     @NonNull
     @Override
@@ -40,13 +50,11 @@ public class PizzaAdapter extends RecyclerView.Adapter<PizzaAdapter.PizzaHolder>
         //inflate the row layout for the items
         LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(R.layout.pizza_row, parent, false);
-
         return new PizzaHolder(view);
     }
 
     /**
-     * Assign data values for each row according to their "position" (index) when the item becomes
-     * visible on the screen.
+     * Assigns images and data values for each row according to their index the user views
      * @param holder the instance of ItemsHolder
      * @param position the index of the item in the list of item`s
      */
@@ -70,7 +78,6 @@ public class PizzaAdapter extends RecyclerView.Adapter<PizzaAdapter.PizzaHolder>
             holder.pizza_image.setImageResource(R.drawable.byo);
             special = "BYO";
         }
-
         holder.pizza_name.setText(pizzas.get(position).getPizzaStyle() + " - " + special);
         holder.pizza_toppings.setText("[CUSTOM PIZZA - SELECT TOPPINGS]");
         String temp = pizzas.get(position).getToppings().toString();
@@ -84,19 +91,30 @@ public class PizzaAdapter extends RecyclerView.Adapter<PizzaAdapter.PizzaHolder>
      * @return the number of items in the list.
      */
     public int getItemCount() {
-        return pizzas.size(); //number of MenuItem in the array list.
+        return pizzas.size();
     }
 
+    /**
+     * Gets the list of currents pizzas
+     * @return list of pizzas
+     */
     public ArrayList<Pizza> getPizzaList() {
         return pizzas;
     }
 
+    /**
+     * Class to get the views
+     */
     public class PizzaHolder extends RecyclerView.ViewHolder {
         private ImageView pizza_image;
         private Button pizza_button;
         private ConstraintLayout parentLayout;
         private TextView pizza_name, pizza_crust, pizza_toppings;
 
+        /**
+         * Constructor initializing variables used in xml files
+         * @param PizzaView View
+         */
         public PizzaHolder(@NonNull View PizzaView) {
             super(PizzaView);
             pizza_name = itemView.findViewById(R.id.pizza_name);
@@ -105,18 +123,18 @@ public class PizzaAdapter extends RecyclerView.Adapter<PizzaAdapter.PizzaHolder>
             pizza_image = itemView.findViewById(R.id.pizza_image);
             parentLayout = itemView.findViewById(R.id.row_layout);
 
-
-            /* set onClickListener for the row layout,
-             * clicking on a row will navigate to another Activity
-             */
             parentLayout.setOnClickListener(new View.OnClickListener() {
+                /**
+                 * onclick function to assign actions based on pizza and position
+                 * @param view to be accessed
+                 */
                 @Override
                 public void onClick(View view) {
                     Intent intent = new Intent(context, PizzaSelectedActivity.class);
                     intent.putExtra("ITEM", pizza_name.getText().toString());
                     intent.putExtra("POSITION", getLayoutPosition());
-                    intent.putExtra("PIZZA", (Serializable) getPizzaList().get(getLayoutPosition()));
-
+                    intent.putExtra("PIZZA", (Serializable) getPizzaList().
+                            get(getLayoutPosition()));
                     PizzaView.getContext().startActivity(intent);
                 }
             });

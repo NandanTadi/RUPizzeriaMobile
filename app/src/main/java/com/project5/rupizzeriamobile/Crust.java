@@ -13,6 +13,7 @@ public enum Crust {
     HAND_TOSSED("HAND TOSSED");
 
     private String crust;
+
     /**
      * Constructor to provide crust
      * @param crust specified Crust
@@ -20,6 +21,7 @@ public enum Crust {
     Crust(String crust) {
         this.crust = crust;
     }
+
     /**
      * Gets the crust in string format
      * @return String crust selected

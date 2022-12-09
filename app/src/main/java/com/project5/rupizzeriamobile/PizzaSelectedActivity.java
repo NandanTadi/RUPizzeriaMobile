@@ -20,8 +20,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
-public class PizzaSelectedActivity extends AppCompatActivity {
+/**
+ * PizzaSelectedActivity class to provide functionality for current orders tab
+ * @author Santosh Maryala, Nandan Tadi
+ */
 
+public class PizzaSelectedActivity extends AppCompatActivity {
     private RecyclerView menuScroll;
     private RecyclerView.LayoutManager pizzaLayout;
     private TextView pizzaType, totalLabel, addTopCostLabel, totalPieCostLabel;
@@ -42,6 +46,11 @@ public class PizzaSelectedActivity extends AppCompatActivity {
     private static int disable = 2;
     private static int enable = 3;
 
+    /**
+     * Initial setup for the Views and the adapter for the RecyclerView
+     * Initializes the selcting ability for toppings and pricing
+     * @param savedInstanceState Bundle
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         intent = getIntent();
@@ -57,7 +66,8 @@ public class PizzaSelectedActivity extends AppCompatActivity {
         toppingsGrid = findViewById(R.id.toppingsGrid);
         toppingsGrid.setVisibility(View.INVISIBLE);
         pizzaType.setText(intent.getStringExtra("ITEM"));
-        ArrayAdapter<Size> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, items);
+        ArrayAdapter<Size> adapter = new ArrayAdapter<>(this,
+                android.R.layout.simple_spinner_item, items);
         sizeSpinner.setAdapter(adapter);
         cur = (Pizza) intent.getSerializableExtra("PIZZA");
         cur.setSize(items[sizeSpinner.getSelectedItemPosition()]);
@@ -67,6 +77,14 @@ public class PizzaSelectedActivity extends AppCompatActivity {
             setCBGroup();
         }
         sizeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+            /**
+             * On item click function where it checks which item is selected
+             * @param adapterView AdapterView
+             * @param view View
+             * @param i current index of the selected pizza
+             * @param l long value
+             */
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 cur.setSize(items[sizeSpinner.getSelectedItemPosition()]);
@@ -77,14 +95,22 @@ public class PizzaSelectedActivity extends AppCompatActivity {
                 }
             }
 
+            /**
+             * Empty method for when nothing selected
+             * @param adapterView
+             */
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
-
             }
         });
-
     }
 
+    /**
+     * Function to determine if and how much additional cost
+     * there are for toppings
+     * @param view View
+     * @return double the additional cost for toppings
+     */
     public double cbClicked(@NonNull View view) {
         int curToppings = iterateCBGroup(1).size();
         if (curToppings <= FREEMAX) {
@@ -98,6 +124,12 @@ public class PizzaSelectedActivity extends AppCompatActivity {
         }
         return extraCost;
     }
+
+    /**
+     * Finding which or which not topping boxes should be disabled
+     * @param function int to see if all checkboxes should be disabled
+     * @return list of selected toppings
+     */
     private ArrayList<Topping> iterateCBGroup(int function) {
         ArrayList<Topping> selected = new ArrayList<>();
         for (CheckBox i: toppingCB) {
@@ -112,6 +144,10 @@ public class PizzaSelectedActivity extends AppCompatActivity {
         }
         return selected;
     }
+
+    /**
+     * Initializing all of variables through the view
+     */
     private void setCBGroup() {
         toppingsGrid.setVisibility(View.VISIBLE);
         chickenCB = findViewById(R.id.chickenCB);
@@ -132,6 +168,11 @@ public class PizzaSelectedActivity extends AppCompatActivity {
                 baconCB, mushroomsCB, onionsCB, jalapenoCB, cheddarCB,
                 pineappleCB, provoloneCB, greenpepersCB, beefCB};
     }
+
+    /**
+     * Function to set directions when add to cart is clicked
+     * @param itemView View to be accessed
+     */
     private void addToCart(@NonNull View itemView) {
         atcBTN.setOnClickListener(view -> {
             if (cur instanceof BuildYourOwn) {
@@ -143,7 +184,8 @@ public class PizzaSelectedActivity extends AppCompatActivity {
                 ((BuildYourOwn) cur).setToppingPrice(cbClicked(temp));
             }
             MainActivity.pizzas.add(cur);
-            Intent intent = new Intent(PizzaSelectedActivity.this, MainActivity.class);
+            Intent intent = new Intent(PizzaSelectedActivity.this,
+                    MainActivity.class);
             startActivity(intent);
         });
     }

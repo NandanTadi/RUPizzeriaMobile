@@ -7,7 +7,7 @@ import java.util.ArrayList;
 /**
  * Pizza class is essential in defining a pizza object
  * It creates all the necessary attributes associated with a pizza
- * @author Santosh Maryala,Nandan Tadi
+ * @author Santosh Maryala, Nandan Tadi
  */
 
 public abstract class Pizza implements Customizable, Serializable {

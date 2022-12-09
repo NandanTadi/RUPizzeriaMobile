@@ -37,6 +37,10 @@ public class StoreOrder implements Customizable{
         return true;
     }
 
+    /**
+     * Obtains the total price of the complete order
+     * @return double total price
+     */
     public double getTotalPrice(){
         double total = 0;
         for (Order order : storeOrders){

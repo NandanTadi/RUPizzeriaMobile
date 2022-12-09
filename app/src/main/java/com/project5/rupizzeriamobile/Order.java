@@ -7,7 +7,7 @@ import java.util.ArrayList;
  * Order class is essential in defining a set of pizza orders
  * It creates all the necessary attributes associated with
  * an order such as price
- * @author Santosh Maryala,Nandan Tadi
+ * @author Santosh Maryala, Nandan Tadi
  */
 
 public class Order implements Customizable{
@@ -25,7 +25,7 @@ public class Order implements Customizable{
     }
 
     /**
-     *  Constructor to initialize a copy of the pizza list for future use
+     * Constructor to initialize a copy of the pizza list for future use
      * @param order to be copied
      */
     public Order(Order order) {
@@ -44,12 +44,12 @@ public class Order implements Customizable{
         return true;
     }
 
+    /**
+     * Setting the unique order id for each order within store orders
+     * @param orderNumber
+     */
     public void setOrderNumber(int orderNumber){
         this.orderNumber = orderNumber;
-    }
-
-    public int getOrderNumber(){
-        return this.orderNumber;
     }
 
     /**
