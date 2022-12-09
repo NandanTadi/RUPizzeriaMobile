@@ -1,6 +1,5 @@
 package com.project5.rupizzeriamobile;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -11,13 +10,9 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-
 import java.text.DecimalFormat;
-import java.util.Collections;
-import java.util.List;
 
 /**
  * StoreOrderActivity class to provide functionality for store orders tab
