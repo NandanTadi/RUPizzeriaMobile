@@ -1,6 +1,5 @@
 package com.project5.rupizzeriamobile;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -11,15 +10,12 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-
 import java.text.DecimalFormat;
-import java.util.Collections;
-import java.util.List;
 
-public class StoreOrdersActivity extends AppCompatActivity implements AdapterView.OnItemClickListener{
+public class StoreOrdersActivity extends AppCompatActivity
+        implements AdapterView.OnItemClickListener{
     private ListView listview;
     private ArrayAdapter<Object> adapter;
     private TextView number_orders_total;

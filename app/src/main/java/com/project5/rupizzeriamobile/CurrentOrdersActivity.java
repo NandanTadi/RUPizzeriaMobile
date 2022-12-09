@@ -56,7 +56,7 @@ public class CurrentOrdersActivity extends AppCompatActivity implements AdapterV
                 current.setPrice(updatePricing());
                 MainActivity.storeOrder.add(current);
                 MainActivity.pizzas = new Order();
-                Intent intent = new Intent(CurrentOrdersActivity.this, StoreOrdersActivity.class);
+                Intent intent = new Intent(CurrentOrdersActivity.this, MainActivity.class);
                 startActivity(intent);
             }
             else{
